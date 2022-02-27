@@ -1,6 +1,10 @@
 .spacing{
     padding: 0% 10%;
 }
-#male-image , #male, #female-image , #female{
+#male-image , #male, #female-image , #female , #spinner , #no-result{
     display: none;
+}
+#no-result{
+    font-size: 70px;
+    color: rgb(243, 108, 108);
 }
