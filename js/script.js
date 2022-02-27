@@ -14,7 +14,7 @@ const loadPlayers = () =>{
     fetch(url)
     .then(res => res.json())
     .then(data => displayPlayers(data.player))
-    document.getElementById('spinner').style.display = 'none';
+    // document.getElementById('spinner').style.display = 'none';
     searchField.value = '';
 }
 //display player with small details in the left side
@@ -39,12 +39,13 @@ const displayPlayers = players =>{
             <h2>${player.strPlayer}</h2>
             <h6>country:${player.strNationality}</h6>
             <div class="buttons">
-                <button onclick="removePlayer('${player.idPlayer}')" class="btn btn-danger">Delete</button>
+                <button onclick="removePlayer()" class="btn btn-danger">Delete</button>
                 <button onclick="playerDetails('${player.idPlayer}')" class="btn btn-success">Details</button>
             </div>
         </div>
     `;
     playerContainer.appendChild(div);
+    document.getElementById('spinner').style.display = 'none';
     }
     }
 }
