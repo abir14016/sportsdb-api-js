@@ -2,11 +2,12 @@
 const loadPlayers = () =>{
     document.getElementById('player-container').innerHTML = '';
     document.getElementById('spinner').style.display = 'inline';
+    document.getElementById('no-result').style.display = 'none';
     document.getElementById('details-container').innerHTML = '';
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     if(searchText == ''){
-        document.getElementById('spinner').style.display = 'inline';
+        document.getElementById('spinner').style.display = 'none';
         document.getElementById('no-result').style.display = 'block';
         return;
     }
@@ -21,7 +22,7 @@ const loadPlayers = () =>{
 const displayPlayers = players =>{
     // console.log(players)
     if(players == null){
-        document.getElementById('spinner').style.display = 'inline';
+        document.getElementById('spinner').style.display = 'none';
         document.getElementById('no-result').style.display = 'block';
     }
     else{
