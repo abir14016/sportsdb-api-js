@@ -1,0 +1,6 @@
+.spacing{
+    padding: 0% 10%;
+}
+#male-image , #male, #female-image , #female{
+    display: none;
+}
