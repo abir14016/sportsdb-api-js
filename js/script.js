@@ -20,7 +20,6 @@ const loadPlayers = () =>{
 }
 //display player with small details in the left side
 const displayPlayers = players =>{
-    // console.log(players)
     if(players == null){
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('no-result').style.display = 'block';
@@ -30,7 +29,6 @@ const displayPlayers = players =>{
         document.getElementById('no-result').style.display = 'none';
         const playerContainer = document.getElementById('player-container');
     for(const player of players){
-        // console.log(player);
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card p-4">
@@ -40,18 +38,23 @@ const displayPlayers = players =>{
             <h2>${player.strPlayer}</h2>
             <h6>country:${player.strNationality}</h6>
             <div class="buttons">
-                <button onclick="removePlayer()" class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger delete-button">Delete</button>
                 <button onclick="playerDetails('${player.idPlayer}')" class="btn btn-success">Details</button>
             </div>
         </div>
     `;
     playerContainer.appendChild(div);
     document.getElementById('spinner').style.display = 'none';
+    const deleteButtons = document.getElementsByClassName('delete-button');
+    for(const deleteButton of deleteButtons){
+        deleteButton.addEventListener('click',function(event){
+            event.target.parentNode.parentNode.style.display = 'none';
+        });
+    }
     }
     }
 }
 const playerDetails = playerID =>{
-    // console.log(playerID)
     const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${playerID}`;
     fetch(url)
     .then(res => res.json())
@@ -59,19 +62,6 @@ const playerDetails = playerID =>{
 }
 //display player with all details in the right side
 const setDetails = info =>{
-    // console.log(info);
-    // if(info.strGender == 'Male'){
-    //     document.getElementById('male-image').style.display = 'inline';
-    //     // document.getElementById('male').style.display = 'block';
-    //     // document.getElementById('female').style.display = 'none';
-    //     document.getElementById('female-image').style.display = 'none';
-    // }
-    // else{
-    //     document.getElementById('male-image').style.display = 'none';
-    //     // document.getElementById('male').style.display = 'none';
-    //     // document.getElementById('female').style.display = 'block';
-    //     document.getElementById('female-image').style.display = 'inline';
-    // }
     const detailsContainer = document.getElementById('details-container');
     const div = document.createElement('div');
     div.classList.add('spacing');
@@ -92,11 +82,3 @@ const setDetails = info =>{
     `;
     detailsContainer.appendChild(div);
 }
-
-
-
-
-{/* <h6>Height:${player.strHeight}</h6>
-            <h6>Weight:${player.strWeight}</h6>
-            <h6>Sports:${player.strSport}</h6>
-            <h6>Position:${player.strPosition}</h6> */}
